@@ -4,10 +4,11 @@ public class Vehicle {
     private String VIN, make, model, color;
     private double wholesaleCost, retailPrice;
     private int modelYear;
+    private VehicleClassification vehicleClass;
 
     // This is a constructor
     public Vehicle(String VIN, double wholesaleCost, double retailPrice, int modelYear, String make, String model,
-            String color) {
+            String color, VehicleClassification vehicleClass) {
         this.VIN = VIN;
         this.wholesaleCost = wholesaleCost;
         this.retailPrice = retailPrice;
@@ -15,9 +16,14 @@ public class Vehicle {
         this.make = make;
         this.model = model;
         this.color = color;
+        this.vehicleClass = vehicleClass;
     }
 
     // Getters
+    public VehicleClassification getVehicleClass() {
+        return vehicleClass;
+    }
+
     public String getVin() {
         return VIN;
     }
@@ -47,6 +53,10 @@ public class Vehicle {
     }
 
     // Setters
+    public void setVehicleClass(VehicleClassification VehicleClass) {
+        this.vehicleClass = vehicleClass;
+    }
+
     public void setVin(String VIN) {
         this.VIN = VIN;
     }
@@ -75,8 +85,13 @@ public class Vehicle {
         this.color = color;
     }
 
-    @Override //Annotation telling us and compiler that we are overriding previously defined behavior
-    public String toString(){ 
-        return this.getModelYear()+ " " + this.getMake() + " " + this.getModel();
+    @Override // Annotation telling us and compiler that we are overriding previously defined
+              // behavior
+    public String toString() {
+        return this.getModelYear() + " " + this.getMake() + " " + this.getModel();
+    }
+
+    public double getTargetMargin() {
+        return this.retailPrice - this.wholesaleCost;
     }
 }
